@@ -37,8 +37,8 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 <script>
-    (function (body) {
-        if (!window.leaving) {
+    (function (body, isLeavingPage) {
+        if (!isLeavingPage) {
 
             var
                 protocols = ['http:', 'https:'], 
@@ -60,7 +60,7 @@
             });
 
         }
-    })(document.body);
+    })(document.body, window.leaving);
 </script>
 </body>
 </html>

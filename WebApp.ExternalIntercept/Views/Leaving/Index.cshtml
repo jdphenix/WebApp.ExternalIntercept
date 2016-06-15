@@ -11,8 +11,15 @@
 <a class="btn btn-info" href="@Model.ExternalUri">Okay, Leave the Website</a>
 @if (Model.Referrer != null)
 {
-    <a class="btn btn-danger" href="@Model.Referrer">Cancel, Go Back</a>
+    <a class="btn btn-danger" id="cancel" href="@Model.Referrer">Cancel, Go Back</a>
 }
 <script>
     var leaving = true;
+
+    (function(cancel) {
+
+        cancel.addEventListener('click', function(event) {
+            window.close();
+        });
+    })(document.getElementById('cancel'));
 </script>
