@@ -1,0 +1,18 @@
+﻿@model WebApp.ExternalIntercept.Models.LeavingViewModel
+
+<h1>
+    External Link Notification - @Model.ExternalUri.Host
+</h1>
+<p>
+    By clicking this link you are leaving the Example website, and navigating to
+    <i>@Model.ExternalUri</i>.
+    Example is not responsible for the content or policies of external Internet sites.
+</p>
+<a class="btn btn-info" href="@Model.ExternalUri">Okay, Leave the Website</a>
+@if (Model.Referrer != null)
+{
+    <a class="btn btn-danger" href="@Model.Referrer">Cancel, Go Back</a>
+}
+<script>
+    var leaving = true;
+</script>

@@ -21,8 +21,6 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
             </div>
         </div>
@@ -38,5 +36,31 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+<script>
+    (function (body) {
+        if (!window.leaving) {
+
+            var
+                protocols = ['http:', 'https:'], 
+                isExternalLink = function (anchor) {
+                    return protocols.indexOf(anchor.protocol) !== -1 && anchor.host !== window.location.host;
+                },
+                isAnchor = function(element) {
+                    return element && element.nodeName === 'A';
+                }
+
+
+            body.addEventListener('click', function(event) {
+                if (isAnchor(event.target) && isExternalLink(event.target)) {
+                    window.open('/Leaving/Index?URL=' + event.target.href);
+
+                    event.preventDefault();
+                    return false;
+                }
+            });
+
+        }
+    })(document.body);
+</script>
 </body>
 </html>
